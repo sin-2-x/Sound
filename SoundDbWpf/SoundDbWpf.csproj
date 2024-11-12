@@ -95,6 +95,10 @@
       <Name>CommonWpf</Name>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\SoundDatabase\SoundDatabase.csproj">
+      <Project>{C9FD14D9-1624-42CF-9C55-24EDBDF9FADD}</Project>
+      <Name>SoundDatabase</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\RemoveIcon.svg" />

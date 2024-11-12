@@ -1,4 +1,5 @@
-﻿using SoundDbWpf.Theme;
+﻿using SoundDatabase;
+using SoundDbWpf.Theme;
 using SoundDbWpf.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,9 @@ namespace SoundDbWpf
             var theme = new LightTheme();
             var vm = new SoundDbViewModel(theme);
             this.DataContext= vm;
+
+            var t = new SoundDatabaseContext("127.0.0.1", 5432, "postgres", "root", "SoundDatabase");
+
         }
     }
 }
