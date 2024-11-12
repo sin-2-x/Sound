@@ -37,7 +37,7 @@ namespace SoundDbWpf.ViewModel.Entities
             EndTime = model.TimeStop;
         }
 
-        private void UpdateModel()
+        public void UpdateModel()
         {
             model.TimeStart = StartTime;
             model.TimeStop = EndTime;

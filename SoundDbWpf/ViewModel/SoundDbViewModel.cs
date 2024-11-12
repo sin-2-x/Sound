@@ -32,14 +32,19 @@ namespace SoundDbWpf.ViewModel
                 new WorkSessionTableViewModel(model)
             };
 
-            AddCommand = new ActionCommand(o => {
+            ApplyCommand = new ActionCommand(o => {
 
 
-                AddEntity?.Invoke(selectedTable.GetNewItem());
-
+                //AddEntity?.Invoke(selectedTable.GetNewItem());
+                SelectedTable.GetSelectedItem().UpdateModel();
                 model.Save();
 
 
+            });
+
+            RemoveCommand = new ActionCommand(o => {
+
+                SelectedTable.GetSelectedItem().UpdateFromModel();
             });
         }
 
@@ -47,7 +52,7 @@ namespace SoundDbWpf.ViewModel
         public byte[] RemoveIcon => theme.RemoveIcon;
         public byte[] UpdateIcon => theme.UpdateIcon;
 
-        public ICommand AddCommand { get; }
+        public ICommand ApplyCommand { get; }
         public ICommand RemoveCommand { get; }
         public ICommand ChangeCommand { get; }
 

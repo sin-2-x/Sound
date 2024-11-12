@@ -26,7 +26,7 @@ namespace CommonWpf.ViewModel
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute(parameter);
+            return _canExecute?.Invoke(parameter)?? true;
         }
 
         public void Execute(object parameter)

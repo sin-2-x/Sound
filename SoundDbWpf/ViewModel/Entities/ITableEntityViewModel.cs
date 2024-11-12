@@ -11,5 +11,8 @@ namespace SoundDbWpf.ViewModel.Entities
     public interface ITableEntityViewModel 
     {
          ICommand ApplyCommand { get;  }
+
+        void UpdateFromModel();
+        void UpdateModel();
     }
 }

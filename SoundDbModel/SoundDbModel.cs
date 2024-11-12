@@ -10,12 +10,17 @@ namespace SoundDbModel
 {
     public class SoundDbModel
     {
+        SoundDatabaseContext db;
+
+        public SoundDbModel() {
+            db = new SoundDatabaseContext(ConnectionString); 
+        }
         public string ConnectionString { get; set; }
 
         public List<Device> GetDevices()
         {
             List<Device> d;
-            using (var db = new SoundDatabaseContext(ConnectionString))
+            //using (var db = new SoundDatabaseContext(ConnectionString))
             {
                 d = db.Devices.ToList();
             }
@@ -25,7 +30,7 @@ namespace SoundDbModel
         public List<WorkSession> GetWorlSessions()
         {
             List<WorkSession> d;
-            using (var db = new SoundDatabaseContext(ConnectionString))
+            //using (var db = new SoundDatabaseContext(ConnectionString))
             {
                 d = db.WorkSessions.ToList();
             }
@@ -33,7 +38,7 @@ namespace SoundDbModel
         }
 
         public void Save() {
-            using (var db = new SoundDatabaseContext(ConnectionString))
+            //using (var db = new SoundDatabaseContext(ConnectionString))
             {
                 db.SaveChanges();
             }

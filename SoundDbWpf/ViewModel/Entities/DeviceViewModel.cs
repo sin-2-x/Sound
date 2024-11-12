@@ -24,5 +24,15 @@ namespace SoundDbWpf.ViewModel.Entities
         public string Name {get;set;}
 
         public ICommand ApplyCommand { get; }
+
+        public void UpdateFromModel()
+        {
+            Name = model.Name;
+            RaisePropertyChanged("Name");
+        }
+        public void UpdateModel()
+        {
+            model.Name = Name;
+        }
     }
 }

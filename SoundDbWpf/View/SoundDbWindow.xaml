@@ -42,7 +42,7 @@
 					Height="{StaticResource ButtonHeight}"
 					Margin="{StaticResource LeftMargin}"
 					ToolTip="{x:Static properties:Resources.AddIcon}"
-					Command="{Binding AddCommand}">
+					Command="{Binding ApplyCommand}">
 				<Image Width="{StaticResource ImageWidth}"
 					   Height="{StaticResource ImageHeight}"
 					   Source="{Binding AddIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
