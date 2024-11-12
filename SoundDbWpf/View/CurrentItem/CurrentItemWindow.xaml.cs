@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SoundDbWpf.View.Tables
+namespace SoundDbWpf.View.CurrentItem
 {
     /// <summary>
-    /// Interaction logic for Table1.xaml
+    /// Interaction logic for CurrentItemWindow.xaml
     /// </summary>
-    public partial class Table1 : UserControl
+    public partial class CurrentItemWindow : Window
     {
-        public Table1()
+        public CurrentItemWindow()
         {
             InitializeComponent();
         }

@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace SoundDbWpf.View.Tables
 {
     /// <summary>
-    /// Interaction logic for Table2.xaml
+    /// Interaction logic for DevicesTable.xaml
     /// </summary>
-    public partial class Table2 : UserControl
+    public partial class DevicesTable : UserControl
     {
-        public Table2()
+        public DevicesTable()
         {
             InitializeComponent();
+            this.DataContextChanged += DevicesTable_DataContextChanged;
+        }
+
+        private void DevicesTable_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
         }
     }
 }

@@ -12,7 +12,7 @@ namespace CommonWpf.ViewModel
         private readonly Predicate<object> _canExecute;
         private readonly Action<object> _execute;
 
-        public ActionCommand(Predicate<object> canExecute, Action<object> execute)
+        public ActionCommand(Action<object> execute, Predicate<object> canExecute = null)
         {
             _canExecute = canExecute;
             _execute = execute;

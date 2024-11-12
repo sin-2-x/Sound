@@ -19,10 +19,11 @@ namespace SoundDatabase
         public DbSet<AnalyzeSession> AnalyzeSessions => Set<AnalyzeSession>();
         public DbSet<AnalyzeSessionResult> AnalyzeSessionsResults => Set<AnalyzeSessionResult>();
         public DbSet<AudioSignal> AudioSignals => Set<AudioSignal>();
+        public DbSet<WorkSession> WorkSessions => Set<WorkSession>();
 
 
-        public SoundDatabaseContext(string host, int port, string login, string password, string databaseName)
-            : base($"Host={host};Port={port};Database={databaseName};Username={login};Password={password};")
+        public SoundDatabaseContext(string host)
+            : base($"Host={"127.0.0.1"};Port={5432};Database={"SoundDatabase"};Username={"postgres"};Password={"root"};")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SoundDatabaseContext, Configuration>(true));
 
@@ -45,7 +46,6 @@ namespace SoundDatabase
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             modelBuilder
             .Entity<AnalyzeSession>().HasRequired(a => a.AudioSignal);
         }

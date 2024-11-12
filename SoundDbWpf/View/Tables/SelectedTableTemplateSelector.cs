@@ -1,4 +1,5 @@
 ﻿using SoundDbWpf.ViewModel;
+using SoundDbWpf.ViewModel.Tables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +16,11 @@ namespace SoundDbWpf.View.Tables
         {
             var element = container as FrameworkElement;
 
-            if (element != null && item != null)
+            if (element != null && item != null&& item is ITableViewModel vm)
             {
-                if (item is TablesEnum.Table1)
-                {
-                    return element.FindResource("Table1") as DataTemplate;
-                }
-                if (item is TablesEnum.Table2)
-                {
-                    return element.FindResource("Table2") as DataTemplate;
-                }
-                
+
+                return element.TryFindResource(vm.TableEnum) as DataTemplate;
+
             }
             return null;
         }

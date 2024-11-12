@@ -1,4 +1,5 @@
 ﻿using SoundDatabase;
+using SoundDbModel;
 using SoundDbWpf.Theme;
 using SoundDbWpf.ViewModel;
 using System;
@@ -27,11 +28,17 @@ namespace SoundDbWpf
             InitializeComponent();
 
             var theme = new LightTheme();
-            var vm = new SoundDbViewModel(theme);
+            var model = new SoundDbModel.SoundDbModel();
+            var vm = new SoundDbViewModel(model, theme);
             this.DataContext= vm;
 
-            var t = new SoundDatabaseContext("127.0.0.1", 5432, "postgres", "root", "SoundDatabase");
+            //var t = new SoundDatabaseContext("127.0.0.1", 5432, "postgres", "root", "SoundDatabase");
+            vm.AddEntity += Vm_AddEntity;
+        }
 
+        private void Vm_AddEntity(ViewModel.Entities.ITableEntityViewModel obj)
+        {
+            
         }
     }
 }

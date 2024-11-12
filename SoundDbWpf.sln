@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonWpf", "CommonWpf\Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundDatabase", "SoundDatabase\SoundDatabase.csproj", "{C9FD14D9-1624-42CF-9C55-24EDBDF9FADD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundDbModel", "SoundDbModel\SoundDbModel.csproj", "{7490A53A-D75D-435F-BED8-F4049828079D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C9FD14D9-1624-42CF-9C55-24EDBDF9FADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9FD14D9-1624-42CF-9C55-24EDBDF9FADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9FD14D9-1624-42CF-9C55-24EDBDF9FADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7490A53A-D75D-435F-BED8-F4049828079D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7490A53A-D75D-435F-BED8-F4049828079D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7490A53A-D75D-435F-BED8-F4049828079D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7490A53A-D75D-435F-BED8-F4049828079D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

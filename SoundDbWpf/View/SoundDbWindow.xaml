@@ -1,75 +1,85 @@
 ﻿<Window x:Class="SoundDbWpf.SoundDbWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:properties="clr-namespace:SoundDbWpf.Properties;assembly=SoundDbWpf"
-        xmlns:converters="clr-namespace:CommonWpf.Converters;assembly=CommonWpf"
-        xmlns:local="clr-namespace:SoundDbWpf"
-        xmlns:viewmodel="clr-namespace:SoundDbWpf.ViewModel"
-        xmlns:tables="clr-namespace:SoundDbWpf.View.Tables"
-        d:DataContext="{d:DesignInstance Type=viewmodel:SoundDbViewModel}"
-        mc:Ignorable="d"
-        Title="{x:Static properties:Resources.SoundDbWpf_WindowName}"
-        Height="450"
-        Width="800"
-        WindowStartupLocation="CenterScreen">
-  <Window.Resources>
-    <ResourceDictionary Source="/CommonWpf;component/CommonResources.xaml" />
-  </Window.Resources>
-  <Grid>
-    <Grid.Resources>
-      <tables:SelectedTableTemplateSelector x:Key="SelectedTableTemplateSelector" />
-    </Grid.Resources>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />
-      <RowDefinition />
-    </Grid.RowDefinitions>
-    <StackPanel Orientation="Horizontal"
-                Margin="{StaticResource TopBottomMargin}">
-      <ComboBox Margin="{StaticResource LeftMargin}"
-                Height="{StaticResource ButtonHeight}"
-                ItemsSource="{Binding Tables}"
-                SelectedItem="{Binding SelectedTable}"
-                VerticalContentAlignment="Center"
-                HorizontalContentAlignment="Center" />
-      <Button Width="{StaticResource ButtonWidth}"
-              Height="{StaticResource ButtonHeight}"
-              Margin="{StaticResource LeftMargin}"
-              ToolTip="{x:Static properties:Resources.AddIcon}">
-        <Image Width="{StaticResource ImageWidth}"
-               Height="{StaticResource ImageHeight}"
-               Source="{Binding AddIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
-      </Button>
-      <Button Width="{StaticResource ButtonWidth}"
-              Height="{StaticResource ButtonHeight}"
-              Margin="{StaticResource LeftMargin}"
-              ToolTip="{x:Static properties:Resources.AddIcon}">
-        <Image Width="{StaticResource ImageWidth}"
-               Height="{StaticResource ImageHeight}"
-               Source="{Binding RemoveIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
-      </Button>
-      <Button Width="{StaticResource ButtonWidth}"
-              Height="{StaticResource ButtonHeight}"
-              Margin="{StaticResource LeftMargin}"
-              ToolTip="{x:Static properties:Resources.AddIcon}">
-        <Image Width="{StaticResource ImageWidth}"
-               Height="{StaticResource ImageHeight}"
-               Source="{Binding UpdateIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
-      </Button>
-    </StackPanel>
-    <ContentPresenter Grid.Row="1"
-                      ContentTemplateSelector="{StaticResource SelectedTableTemplateSelector}"
-                      Content="{Binding SelectedTable}"
-                      Margin="{StaticResource TopMargin}">
-      <ContentPresenter.Resources>
-        <DataTemplate x:Key="Table1">
-          <tables:Table1 />
-        </DataTemplate>
-        <DataTemplate x:Key="Table2">
-          <tables:Table2 />
-        </DataTemplate>
-      </ContentPresenter.Resources>
-    </ContentPresenter>
-  </Grid>
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:properties="clr-namespace:SoundDbWpf.Properties;assembly=SoundDbWpf"
+		xmlns:converters="clr-namespace:CommonWpf.Converters;assembly=CommonWpf"
+		xmlns:local="clr-namespace:SoundDbWpf"
+		xmlns:viewmodel="clr-namespace:SoundDbWpf.ViewModel"
+		xmlns:viewmodel1="clr-namespace:SoundDbWpf.ViewModel.Tables"
+		xmlns:tables="clr-namespace:SoundDbWpf.View.Tables"
+		d:DataContext="{d:DesignInstance Type=viewmodel:SoundDbViewModel}"
+		mc:Ignorable="d"
+		Title="{x:Static properties:Resources.SoundDbWpf_WindowName}"
+		Height="450"
+		Width="800"
+		WindowStartupLocation="CenterScreen">
+	<Window.Resources>
+		<ResourceDictionary Source="/CommonWpf;component/CommonResources.xaml" />
+	</Window.Resources>
+	<Grid>
+		<Grid.Resources>
+			<tables:SelectedTableTemplateSelector x:Key="SelectedTableTemplateSelector" />
+		</Grid.Resources>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<StackPanel Orientation="Horizontal"
+					Margin="{StaticResource TopBottomMargin}">
+			<ComboBox  MinWidth="{StaticResource ComboBoxWidth}"
+					   Margin="{StaticResource LeftMargin}"
+					   Height="{StaticResource ButtonHeight}"
+					   ItemsSource="{Binding Tables}"
+					   SelectedItem="{Binding SelectedTable}"
+					   VerticalContentAlignment="Center"
+					   DisplayMemberPath="TableEnum">
+
+
+			</ComboBox>
+			<Button Width="{StaticResource ButtonWidth}"
+					Height="{StaticResource ButtonHeight}"
+					Margin="{StaticResource LeftMargin}"
+					ToolTip="{x:Static properties:Resources.AddIcon}"
+					Command="{Binding AddCommand}">
+				<Image Width="{StaticResource ImageWidth}"
+					   Height="{StaticResource ImageHeight}"
+					   Source="{Binding AddIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
+			</Button>
+			<Button Width="{StaticResource ButtonWidth}"
+					Height="{StaticResource ButtonHeight}"
+					Margin="{StaticResource LeftMargin}"
+					Command="{Binding RemoveCommand}"
+					ToolTip="{x:Static properties:Resources.AddIcon}">
+				<Image Width="{StaticResource ImageWidth}"
+					   Height="{StaticResource ImageHeight}"
+					   Source="{Binding RemoveIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
+			</Button>
+			<Button Width="{StaticResource ButtonWidth}"
+					Height="{StaticResource ButtonHeight}"
+					Margin="{StaticResource LeftMargin}"
+					Command="{Binding ChangeCommand}"
+					ToolTip="{x:Static properties:Resources.AddIcon}">
+				<Image Width="{StaticResource ImageWidth}"
+					   Height="{StaticResource ImageHeight}"
+					   Source="{Binding UpdateIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
+			</Button>
+		</StackPanel>
+		<ContentPresenter Grid.Row="1"
+						  ContentTemplateSelector="{StaticResource SelectedTableTemplateSelector}"
+						  Content="{Binding SelectedTable}"
+						  Margin="{StaticResource TopMargin}"
+						  DataContext="{Binding }">
+			<ContentPresenter.Resources>
+
+				<DataTemplate x:Key="{x:Static viewmodel:TableEnum.Device}">
+					<tables:DevicesTable />
+				</DataTemplate>
+				<DataTemplate x:Key="{x:Static viewmodel:TableEnum.WorkSession}">
+					<tables:WorkSessionTable />
+				</DataTemplate>
+			</ContentPresenter.Resources>
+		</ContentPresenter>
+	</Grid>
 </Window>

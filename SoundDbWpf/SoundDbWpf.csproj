@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EnumStringValues, Version=4.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnumStringValues.4.0.2\lib\net451\EnumStringValues.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -56,19 +59,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Entities\AnalyzeSessionViewModel.cs" />
+    <Compile Include="ViewModel\Entities\AnalyzeSessionResultViewModel.cs" />
+    <Compile Include="ViewModel\Entities\AudioSignalViewModel.cs" />
+    <Compile Include="ViewModel\Entities\ITableEntityViewModel.cs" />
+    <Compile Include="ViewModel\Entities\DeviceViewModel.cs" />
+    <Compile Include="ViewModel\Entities\DeviceWorkSessionViewModel.cs" />
+    <Compile Include="ViewModel\Tables\DeviceTableViewModel.cs" />
+    <Compile Include="ViewModel\Entities\WorkSessionViewModel.cs" />
     <Compile Include="ViewModel\SoundDbViewModel.cs" />
-    <Compile Include="ViewModel\TablesEnum.cs" />
+    <Compile Include="ViewModel\TableEnum.cs" />
+    <Compile Include="ViewModel\Tables\TableViewModel.cs" />
+    <Compile Include="ViewModel\Tables\WorkSessionTableViewModel.cs" />
+    <Compile Include="View\CurrentItem\CurrentItemWindow.xaml.cs">
+      <DependentUpon>CurrentItemWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SoundDbWindow.xaml.cs">
       <DependentUpon>SoundDbWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Theme\ITheme.cs" />
     <Compile Include="Theme\LightTheme.cs" />
-    <Compile Include="View\Tables\SelectedTableTemplateSelector.cs" />
-    <Compile Include="View\Tables\Table1.xaml.cs">
-      <DependentUpon>Table1.xaml</DependentUpon>
+    <Compile Include="View\Tables\DevicesTable.xaml.cs">
+      <DependentUpon>DevicesTable.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Tables\Table2.xaml.cs">
-      <DependentUpon>Table2.xaml</DependentUpon>
+    <Compile Include="View\Tables\SelectedTableTemplateSelector.cs" />
+    <Compile Include="View\Tables\WorkSessionTable.xaml.cs">
+      <DependentUpon>WorkSessionTable.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -76,15 +92,23 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\CurrentItem\CurrentItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SoundDbWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Tables\Table1.xaml">
+    <Page Include="View\Tables\DevicesTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Tables\Table2.xaml">
+    <Page Include="View\Tables\TablesStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tables\WorkSessionTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,8 +123,13 @@
       <Project>{C9FD14D9-1624-42CF-9C55-24EDBDF9FADD}</Project>
       <Name>SoundDatabase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SoundDbModel\SoundDbModel.csproj">
+      <Project>{7490A53A-D75D-435F-BED8-F4049828079D}</Project>
+      <Name>SoundDbModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\RemoveIcon.svg" />
   </ItemGroup>
   <ItemGroup>
