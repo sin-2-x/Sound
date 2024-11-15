@@ -1,18 +1,11 @@
-﻿using CommonWpf.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using SoundDatabase.DataModel;
 
 namespace SoundDbWpf.ViewModel.Entities
 {
     public interface ITableEntityViewModel 
     {
-         ICommand ApplyCommand { get;  }
+        bool NeedApply { get; }
 
-        void UpdateFromModel();
-        void UpdateModel();
+        BaseEntity Model { get; }
     }
 }

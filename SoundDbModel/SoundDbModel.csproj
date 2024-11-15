@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="SoundDbModel.cs" />
+    <Compile Include="Tables\BaseTable.cs" />
+    <Compile Include="Tables\DevicesTable.cs" />
+    <Compile Include="Tables\WorkSessionsTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SoundDatabase\SoundDatabase.csproj">

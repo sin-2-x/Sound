@@ -1,13 +1,8 @@
 ﻿using CommonWpf.ViewModel;
 using SoundDbWpf.Theme;
-using SoundDbWpf.ViewModel.Entities;
 using SoundDbWpf.ViewModel.Tables;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace SoundDbWpf.ViewModel
@@ -24,37 +19,47 @@ namespace SoundDbWpf.ViewModel
             this.model = model;
 
             Tables = new List<ITableViewModel> {
-                new DeviceTableViewModel(model),
+                new DeviceTableViewModel(),
                 /*new AnalyzeSessionResultTableViewModel(model),
                 new AnalyzeSessionTableViewModel(model),
                 new AudioSignalTableViewModel(model),
                 new DeviceWorkSessionTableViewModel(model),*/
-                new WorkSessionTableViewModel(model)
+                //new WorkSessionTableViewModel(model)
             };
 
-            ApplyCommand = new ActionCommand(o => {
+            AddCommand = new ActionCommand(o =>
+            {
+                SelectedTable.AddImpl();
+            });
 
+            RemoveCommand = new ActionCommand(o =>
+            {
+                SelectedTable.RemoveImpl();
+            });
 
-                //AddEntity?.Invoke(selectedTable.GetNewItem());
-                SelectedTable.GetSelectedItem().UpdateModel();
-                model.Save();
+            ApplyCommand = new ActionCommand(o =>
+            {
+                SelectedTable.SaveImpl();
+            });
 
+            UpdateCommand = new ActionCommand(o =>
+            {
+                SelectedTable.UpdateImpl();
 
             });
 
-            RemoveCommand = new ActionCommand(o => {
-
-                SelectedTable.GetSelectedItem().UpdateFromModel();
-            });
+            SelectedTable = Tables.First();
         }
 
         public byte[] AddIcon => theme.AddIcon;
         public byte[] RemoveIcon => theme.RemoveIcon;
         public byte[] UpdateIcon => theme.UpdateIcon;
 
-        public ICommand ApplyCommand { get; }
+
+        public ICommand AddCommand { get; }
         public ICommand RemoveCommand { get; }
-        public ICommand ChangeCommand { get; }
+        public ICommand ApplyCommand { get; }
+        public ICommand UpdateCommand { get; }
 
         public List<ITableViewModel> Tables { get; }
         public ITableViewModel SelectedTable
@@ -68,12 +73,10 @@ namespace SoundDbWpf.ViewModel
                 }
                 selectedTable = value;
 
-                selectedTable.UpdateTable();
+                selectedTable.UpdateImpl();
                 RaisePropertyChanged(nameof(SelectedTable));
             }
         }
 
-
-        public event Action<ITableEntityViewModel> AddEntity;
     }
 }

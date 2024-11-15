@@ -1,10 +1,4 @@
-﻿using SoundDbWpf.ViewModel;
-using SoundDbWpf.ViewModel.Tables;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SoundDbWpf.ViewModel.Tables;
 using System.Windows;
 using System.Windows.Controls;
 

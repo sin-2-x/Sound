@@ -1,12 +1,6 @@
 ﻿using SoundDatabase.DataModel;
 using SoundDatabase.Migrations;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SoundDatabase
 {
@@ -21,8 +15,7 @@ namespace SoundDatabase
         public DbSet<AudioSignal> AudioSignals => Set<AudioSignal>();
         public DbSet<WorkSession> WorkSessions => Set<WorkSession>();
 
-
-        public SoundDatabaseContext(string host)
+        public SoundDatabaseContext(string h)
             : base($"Host={"127.0.0.1"};Port={5432};Database={"SoundDatabase"};Username={"postgres"};Password={"root"};")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SoundDatabaseContext, Configuration>(true));
@@ -48,6 +41,9 @@ namespace SoundDatabase
         {
             modelBuilder
             .Entity<AnalyzeSession>().HasRequired(a => a.AudioSignal);
+
+
+            modelBuilder.Entity<Device>().HasKey(i => i.Id);
         }
 
         //public SoundDatabaseContext() => Database.EnsureCreated();

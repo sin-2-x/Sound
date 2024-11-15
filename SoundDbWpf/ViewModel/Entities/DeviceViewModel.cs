@@ -1,38 +1,36 @@
 ﻿using CommonWpf.ViewModel;
-using SoundDbWpf.ViewModel.Entities;
-using SoundDbWpf.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
 using SoundDatabase.DataModel;
-using System.Windows.Input;
 
 namespace SoundDbWpf.ViewModel.Entities
 {
     public class DeviceViewModel : NotifyPropertyChanged, ITableEntityViewModel
     {
-        private Device model;
-        public DeviceViewModel(Device model) {
+        private readonly Device model;
+
+        public DeviceViewModel(Device model)
+        {
             this.model = model;
-
-            Name = model.Name;
         }
 
-        public string Name {get;set;}
+        public BaseEntity Model => model;
 
-        public ICommand ApplyCommand { get; }
+        public bool NeedApply { get; private set; }
 
-        public void UpdateFromModel()
+        public string Name
         {
-            Name = model.Name;
-            RaisePropertyChanged("Name");
-        }
-        public void UpdateModel()
-        {
-            model.Name = Name;
+            get
+            {
+                return model.Name;
+            }
+            set
+            {
+                if (value == model.Name)
+                {
+                    return;
+                }
+                NeedApply = true;
+                model.Name = value;
+            }
         }
     }
 }

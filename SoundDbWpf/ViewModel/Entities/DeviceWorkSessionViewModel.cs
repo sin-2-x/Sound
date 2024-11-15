@@ -1,4 +1,4 @@
-﻿using CommonWpf.ViewModel;
+﻿/*using CommonWpf.ViewModel;
 using SoundDbWpf.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -14,3 +14,4 @@ namespace SoundDbWpf.ViewModel.Entities
         public TableEnum TableEnum => TableEnum.DeviceWorkSession;
     }
 }
+*/

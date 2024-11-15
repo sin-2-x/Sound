@@ -1,4 +1,4 @@
-﻿using CommonWpf.ViewModel;
+﻿/*using CommonWpf.ViewModel;
 using SoundDbWpf.ViewModel;
 using SoundDbWpf.ViewModel.Tables;
 using System;
@@ -14,3 +14,4 @@ namespace SoundDbWpf.ViewModel.Entities
         public AnalyzeSessionResultViewModel() { }
     }
 }
+*/

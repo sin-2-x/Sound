@@ -35,18 +35,19 @@
 					   SelectedItem="{Binding SelectedTable}"
 					   VerticalContentAlignment="Center"
 					   DisplayMemberPath="TableEnum">
-
-
 			</ComboBox>
 			<Button Width="{StaticResource ButtonWidth}"
 					Height="{StaticResource ButtonHeight}"
 					Margin="{StaticResource LeftMargin}"
 					ToolTip="{x:Static properties:Resources.AddIcon}"
-					Command="{Binding ApplyCommand}">
+					Command="{Binding AddCommand}">
 				<Image Width="{StaticResource ImageWidth}"
 					   Height="{StaticResource ImageHeight}"
 					   Source="{Binding AddIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
 			</Button>
+			
+			
+			
 			<Button Width="{StaticResource ButtonWidth}"
 					Height="{StaticResource ButtonHeight}"
 					Margin="{StaticResource LeftMargin}"
@@ -56,10 +57,18 @@
 					   Height="{StaticResource ImageHeight}"
 					   Source="{Binding RemoveIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
 			</Button>
+
 			<Button Width="{StaticResource ButtonWidth}"
 					Height="{StaticResource ButtonHeight}"
 					Margin="{StaticResource LeftMargin}"
-					Command="{Binding ChangeCommand}"
+					Command="{Binding ApplyCommand}"
+					ToolTip="{x:Static properties:Resources.AddIcon}">
+			</Button>
+			
+			<Button Width="{StaticResource ButtonWidth}"
+					Height="{StaticResource ButtonHeight}"
+					Margin="{StaticResource LeftMargin}"
+					Command="{Binding UpdateCommand}"
 					ToolTip="{x:Static properties:Resources.AddIcon}">
 				<Image Width="{StaticResource ImageWidth}"
 					   Height="{StaticResource ImageHeight}"
