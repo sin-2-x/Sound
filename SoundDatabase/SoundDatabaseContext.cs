@@ -14,43 +14,26 @@ namespace SoundDatabase
         public DbSet<AnalyzeSessionResult> AnalyzeSessionsResults => Set<AnalyzeSessionResult>();
         public DbSet<AudioSignal> AudioSignals => Set<AudioSignal>();
         public DbSet<WorkSession> WorkSessions => Set<WorkSession>();
+        public DbSet<DeviceWorkSession> DeviceWorkSessions => Set<DeviceWorkSession>();
 
-        public SoundDatabaseContext(string h)
+        public SoundDatabaseContext()
             : base($"Host={"127.0.0.1"};Port={5432};Database={"SoundDatabase"};Username={"postgres"};Password={"root"};")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SoundDatabaseContext, Configuration>(true));
 
             Database.CreateIfNotExists();
-            //connectionconfig = $"Host={host};Port={port};Database={databaseName};Username={login};Password={password};";
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<UhfDatabaseContext, Configuration>(true));
-        }
 
-        /*public SoundDatabaseContext()
-            : base($"Host={"127.0.0.1"};Port={5432};Database={"SoundDatabase"};Username={"postgres"};Password={"root"};")
-        {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SoundDatabaseContext, Configuration>(true));
-            //connectionconfig = $"Host={host};Port={port};Database={databaseName};Username={login};Password={password};";
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<UhfDatabaseContext, Configuration>(true));
-        }*/
+            
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder
-            .Entity<AnalyzeSession>().HasRequired(a => a.AudioSignal);
+            modelBuilder.Entity<AnalyzeSession>().HasRequired(a => a.AudioSignal);
+            
+            modelBuilder.Entity<Device>().HasMany(i => i.DeviceWorkSession).WithOptional(i => i.Device).HasForeignKey(i => i.DeviceId);
 
-
-            modelBuilder.Entity<Device>().HasKey(i => i.Id);
+            //modelBuilder.Entity<DeviceWorkSession>().HasOptional(i => i.Device).WithMany(i=>i.DeviceWorkSession).HasForeignKey(i=>i.DeviceId).WillCascadeOnDelete(false);
+            
         }
-
-        //public SoundDatabaseContext() => Database.EnsureCreated();
-
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql(connectionconfig);
-        }*/
     }
 }

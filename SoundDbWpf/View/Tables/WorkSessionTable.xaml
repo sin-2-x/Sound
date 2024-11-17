@@ -18,11 +18,10 @@
 			  Style="{StaticResource TableStyle}">
 		<DataGrid.Columns>
 			<DataGridTextColumn Header="Начало сессии"
-								Binding="{Binding StartTime}"
-								IsReadOnly="True" />
+								Binding="{Binding StartTime, StringFormat={}{0:dd.MM.yyyy HH:mm}}" 
+								/>
 			<DataGridTextColumn Header="Окончание сессии"
-								Binding="{Binding EndTime}"
-								IsReadOnly="True" />
+								Binding="{Binding EndTime, StringFormat={}{0:dd.MM.yyyy HH:mm}}" />
 		</DataGrid.Columns>
 	</DataGrid>
 </UserControl>

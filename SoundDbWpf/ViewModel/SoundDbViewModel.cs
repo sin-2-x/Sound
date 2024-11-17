@@ -10,21 +10,20 @@ namespace SoundDbWpf.ViewModel
     internal class SoundDbViewModel : NotifyPropertyChanged
     {
         private readonly ITheme theme;
-        private SoundDbModel.SoundDbModel model;
 
         private ITableViewModel selectedTable;
-        public SoundDbViewModel(SoundDbModel.SoundDbModel model, ITheme theme)
+        public SoundDbViewModel( ITheme theme)
         {
             this.theme = theme;
-            this.model = model;
 
             Tables = new List<ITableViewModel> {
                 new DeviceTableViewModel(),
+                new DeviceWorkSessionTableViewModel(new DeviceTableViewModel(), new WorkSessionTableViewModel()),
                 /*new AnalyzeSessionResultTableViewModel(model),
                 new AnalyzeSessionTableViewModel(model),
                 new AudioSignalTableViewModel(model),
-                new DeviceWorkSessionTableViewModel(model),*/
-                //new WorkSessionTableViewModel(model)
+                */
+                new WorkSessionTableViewModel()
             };
 
             AddCommand = new ActionCommand(o =>
@@ -62,6 +61,7 @@ namespace SoundDbWpf.ViewModel
         public ICommand UpdateCommand { get; }
 
         public List<ITableViewModel> Tables { get; }
+
         public ITableViewModel SelectedTable
         {
             get { return selectedTable; }
@@ -73,7 +73,7 @@ namespace SoundDbWpf.ViewModel
                 }
                 selectedTable = value;
 
-                selectedTable.UpdateImpl();
+                UpdateCommand.Execute(null);
                 RaisePropertyChanged(nameof(SelectedTable));
             }
         }

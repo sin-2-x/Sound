@@ -20,17 +20,17 @@ namespace SoundDbWpf.ViewModel.Tables
 
     }
 
-    public abstract class TableViewModel<T, M> : ITableViewModel where M : BaseEntity where T : ITableEntityViewModel
+    public abstract class TableViewModel<T, M> : ITableViewModel where M : BaseEntity where T : ITableEntityViewModel<M>
     {
         protected BaseTable<M> model;
 
-        protected List<T> addedItems = new List<T>();
-        protected List<T> removeditems = new List<T>();
+        protected List<M> addedItems = new List<M>();
+        protected List<M> removeditems = new List<M>();
 
         protected TableViewModel(BaseTable<M> model, TableEnum tableEnum)
         {
             this.model = model;
-            TableEnum = tableEnum;  
+            TableEnum = tableEnum;
         }
 
         public TableEnum TableEnum { get; }
@@ -46,7 +46,7 @@ namespace SoundDbWpf.ViewModel.Tables
             M model1 = model.CreateNewEntity();
             var newItem = CreateViewModel(model1);
             Items.Add(newItem);
-            addedItems.Add(newItem);
+            addedItems.Add(model1);
         }
 
         public void RemoveImpl()
@@ -55,13 +55,12 @@ namespace SoundDbWpf.ViewModel.Tables
             {
                 return;
             }
-            removeditems.Add(SelectedItem);
+
+            removeditems.Add(SelectedItem.Model);
             Items.Remove(SelectedItem);
-
-
         }
 
-        public void UpdateImpl()
+        public virtual void UpdateImpl()
         {
             addedItems.Clear();
             removeditems.Clear();
@@ -71,19 +70,19 @@ namespace SoundDbWpf.ViewModel.Tables
             Items.Clear();
             foreach (var device in collection)
             {
-                Items.Add(CreateViewModel(device));
+                var vm = CreateViewModel(device);
+                Items.Add(vm);
             }
             SelectedItem = Items.FirstOrDefault();
         }
 
         public void SaveImpl()
         {
-            model.UpdateEntries(addedItems.Select(i => i.Model).ToList(), removeditems.Select(i => i.Model).ToList(), Items.Where(i => i.NeedApply).Select(i => i.Model).ToList());
+            model.UpdateEntries(addedItems.ToList(), removeditems.ToList(), Items.Where(i => i.NeedApply).Select(i => i.Model).ToList());
 
             addedItems.Clear();
             removeditems.Clear();
         }
-
     }
 
     /*public interface TableViewModel<T>

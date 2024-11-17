@@ -1,9 +1,10 @@
 ﻿using CommonWpf.ViewModel;
 using SoundDatabase.DataModel;
+using System;
 
 namespace SoundDbWpf.ViewModel.Entities
 {
-    public class DeviceViewModel : NotifyPropertyChanged, ITableEntityViewModel
+    public class DeviceViewModel : NotifyPropertyChanged, ITableEntityViewModel<Device>
     {
         private readonly Device model;
 
@@ -12,7 +13,7 @@ namespace SoundDbWpf.ViewModel.Entities
             this.model = model;
         }
 
-        public BaseEntity Model => model;
+        public Device Model => model;
 
         public bool NeedApply { get; private set; }
 
@@ -31,6 +32,12 @@ namespace SoundDbWpf.ViewModel.Entities
                 NeedApply = true;
                 model.Name = value;
             }
+        }
+
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

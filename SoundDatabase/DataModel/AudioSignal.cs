@@ -1,4 +1,6 @@
-﻿namespace SoundDatabase.DataModel
+﻿using System;
+
+namespace SoundDatabase.DataModel
 {
     public class AudioSignal : BaseEntity
     {

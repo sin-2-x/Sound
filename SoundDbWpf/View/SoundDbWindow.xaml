@@ -88,6 +88,9 @@
 				<DataTemplate x:Key="{x:Static viewmodel:TableEnum.WorkSession}">
 					<tables:WorkSessionTable />
 				</DataTemplate>
+				<DataTemplate x:Key="{x:Static viewmodel:TableEnum.DeviceWorkSession}">
+					<tables:DeviceWorkSessionsTable />
+				</DataTemplate>
 			</ContentPresenter.Resources>
 		</ContentPresenter>
 	</Grid>

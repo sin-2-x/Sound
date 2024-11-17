@@ -14,8 +14,7 @@ namespace SoundDbWpf
             InitializeComponent();
 
             var theme = new LightTheme();
-            var model = new SoundDbModel.SoundDbModel();
-            var vm = new SoundDbViewModel(model, theme);
+            var vm = new SoundDbViewModel( theme);
             this.DataContext= vm;
 
         }

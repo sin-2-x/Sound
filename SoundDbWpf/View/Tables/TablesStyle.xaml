@@ -16,6 +16,5 @@
 				Value="False" />
 		<Setter Property="ColumnWidth"
 				Value="Auto" />
-
 	</Style>
 </ResourceDictionary>

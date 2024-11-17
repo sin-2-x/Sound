@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="SoundDbWpf.View.Tables.DeviceWorkSessionsTable"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:local="clr-namespace:SoundDbWpf.View.Tables"
+			 xmlns:viewmodel="clr-namespace:SoundDbWpf.ViewModel.Tables"
+			 mc:Ignorable="d"
+			 d:DataContext="{d:DesignInstance Type=viewmodel:DeviceWorkSessionTableViewModel}"
+			 d:DesignHeight="450"
+			 d:DesignWidth="800">
+	<UserControl.Resources>
+
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source=".\TablesStyle.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+	<DataGrid x:Name="dataGrid"
+			  ItemsSource="{Binding Items}"
+			  SelectedItem="{Binding SelectedItem}"
+			  Style="{StaticResource TableStyle}"
+			  >
+		<DataGrid.Columns>
+			<DataGridTemplateColumn Header="Устройство">
+				<DataGridTemplateColumn.CellTemplate>
+					<DataTemplate>
+						<ComboBox ItemsSource="{Binding DataContext.Devices, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DeviceWorkSessionsTable}}}"
+								  SelectedValue="{Binding Device, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+					</DataTemplate>
+				</DataGridTemplateColumn.CellTemplate>
+			</DataGridTemplateColumn>
+
+			<DataGridTextColumn Header="Название устройства"
+								Binding="{Binding Device}" />
+		</DataGrid.Columns>
+	</DataGrid>
+
+</UserControl>

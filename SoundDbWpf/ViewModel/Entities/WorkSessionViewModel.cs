@@ -4,7 +4,7 @@ using SoundDatabase.DataModel;
 
 namespace SoundDbWpf.ViewModel.Entities
 {
-    public class WorkSessionViewModel : NotifyPropertyChanged, ITableEntityViewModel
+    public class WorkSessionViewModel : NotifyPropertyChanged, ITableEntityViewModel<WorkSession>
     {
         private readonly WorkSession model;
 
@@ -14,11 +14,41 @@ namespace SoundDbWpf.ViewModel.Entities
 
         }
 
-        public BaseEntity Model => model;
+        public WorkSession Model => model;
         public bool NeedApply { get; private set; }
 
-        public DateTime StartTime { get; set; }
+        public DateTime StartTime
+        {
+            get
+            {
+                return model.TimeStart;
+            }
+            set
+            {
+                if (value == model.TimeStart)
+                {
+                    return;
+                }
+                NeedApply = true;
+                model.TimeStart = value;
+            }
+        }
 
-        public DateTime EndTime { get; set; }
+        public DateTime EndTime
+        {
+            get
+            {
+                return model.TimeStop;
+            }
+            set
+            {
+                if (value == model.TimeStop)
+                {
+                    return;
+                }
+                NeedApply = true;
+                model.TimeStop = value;
+            }
+        }
     }
 }

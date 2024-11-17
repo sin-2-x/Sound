@@ -64,13 +64,14 @@
     <Compile Include="ViewModel\Entities\AnalyzeSessionViewModel.cs" />
     <Compile Include="ViewModel\Entities\AnalyzeSessionResultViewModel.cs" />
     <Compile Include="ViewModel\Entities\AudioSignalViewModel.cs" />
-    <Compile Include="ViewModel\Entities\ITableEntityViewModel.cs" />
+    <Compile Include="ViewModel\Entities\BaseTableEntityViewModel.cs" />
     <Compile Include="ViewModel\Entities\DeviceViewModel.cs" />
     <Compile Include="ViewModel\Entities\DeviceWorkSessionViewModel.cs" />
     <Compile Include="ViewModel\Tables\DeviceTableViewModel.cs" />
     <Compile Include="ViewModel\Entities\WorkSessionViewModel.cs" />
     <Compile Include="ViewModel\SoundDbViewModel.cs" />
     <Compile Include="ViewModel\TableEnum.cs" />
+    <Compile Include="ViewModel\Tables\DeviceWorkSessionTableViewModel.cs" />
     <Compile Include="ViewModel\Tables\TableViewModel.cs" />
     <Compile Include="ViewModel\Tables\WorkSessionTableViewModel.cs" />
     <Compile Include="View\CurrentItem\CurrentItemWindow.xaml.cs">
@@ -83,6 +84,9 @@
     <Compile Include="Theme\LightTheme.cs" />
     <Compile Include="View\Tables\DevicesTable.xaml.cs">
       <DependentUpon>DevicesTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tables\DeviceWorkSessionsTable.xaml.cs">
+      <DependentUpon>DeviceWorkSessionsTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Tables\SelectedTableTemplateSelector.cs" />
     <Compile Include="View\Tables\WorkSessionTable.xaml.cs">
@@ -103,6 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Tables\DevicesTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tables\DeviceWorkSessionsTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
