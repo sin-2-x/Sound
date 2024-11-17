@@ -17,14 +17,11 @@ namespace SoundDatabase
         public DbSet<WorkSession> WorkSessions => Set<WorkSession>();
         public DbSet<DeviceWorkSession> DeviceWorkSessions => Set<DeviceWorkSession>();
 
-        public SoundDatabaseContext()
-            : base("Name=DefaultConnection")
+        public SoundDatabaseContext() : base("Name=DefaultConnection")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SoundDatabaseContext, Migrations.Configuration>(true));
 
             Database.CreateIfNotExists();
-
-            
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -1,9 +1,12 @@
-﻿using SoundDatabase.DataModel;
+﻿using CommonWpf;
+using SoundDatabase.DataModel;
 using SoundDbModel.Tables;
 using SoundDbWpf.ViewModel.Entities;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace SoundDbWpf.ViewModel.Tables
 {
@@ -43,11 +46,16 @@ namespace SoundDbWpf.ViewModel.Tables
 
         public void AddImpl()
         {
-            var newEntity = model.CreateNewEntity();
-            var newItem = CreateViewModel(newEntity);
+            var newModel = model.CreateNewEntity();
+            var newViewModel = CreateViewModel(newModel);
 
-            Items.Add(newItem);
-            addedItems.Add(newEntity);
+            addedItems.Add(newModel);
+
+            MainApplication.BeginInvokeInGuiThread(() =>
+            {
+                Items.Add(newViewModel);
+            });
+
         }
 
         public void RemoveImpl()
@@ -56,20 +64,36 @@ namespace SoundDbWpf.ViewModel.Tables
             {
                 return;
             }
+
             removeditems.Add(SelectedItem.Model);
-            Items.Remove(SelectedItem);
+
+            MainApplication.BeginInvokeInGuiThread(() =>
+            {
+                Items.Remove(SelectedItem);
+            });
         }
 
         public virtual void UpdateImpl()
         {
             addedItems.Clear();
             removeditems.Clear();
-            Items.Clear();
+            var models = model.GetEntries();
+            var viewModels = models.Select(m=> CreateViewModel(m));
 
-            var collection = model.GetEntries();
-            foreach (var device in collection)
+            UpdateItems(viewModels);
+        }
+
+        private void UpdateItems(IEnumerable<T> vms)
+        {
+            if (MainApplication.InvokeRequired)
             {
-                var vm = CreateViewModel(device);
+                MainApplication.BeginInvokeInGuiThread(() => UpdateItems(vms));
+                return;
+            }
+
+            Items.Clear();
+            foreach (var vm in vms)
+            {
                 Items.Add(vm);
             }
             SelectedItem = Items.FirstOrDefault();

@@ -1,8 +1,10 @@
 ﻿using CommonWpf.ViewModel;
 using SoundDbWpf.Theme;
 using SoundDbWpf.ViewModel.Tables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace SoundDbWpf.ViewModel
@@ -12,40 +14,39 @@ namespace SoundDbWpf.ViewModel
         private readonly ITheme theme;
 
         private ITableViewModel selectedTable;
-        public SoundDbViewModel( ITheme theme)
+        public SoundDbViewModel(ITheme theme)
         {
             this.theme = theme;
 
-            Tables = new List<ITableViewModel> {
-                new DeviceTableViewModel(),
-                new DeviceWorkSessionTableViewModel(new DeviceTableViewModel(), new WorkSessionTableViewModel()),
-                /*new AnalyzeSessionResultTableViewModel(model),
-                new AnalyzeSessionTableViewModel(model),
-                new AudioSignalTableViewModel(model),
-                */
-                new WorkSessionTableViewModel()
+            Tables = new List<ITableViewModel>();
+
+            var deviceTableViewModel = new DeviceTableViewModel();
+            var workSessionTableViewModel = new WorkSessionTableViewModel();
+            var deviceWorkSessionTableViewModel = new DeviceWorkSessionTableViewModel(deviceTableViewModel, workSessionTableViewModel);
+
+            Tables = new List<ITableViewModel> {deviceTableViewModel,
+                workSessionTableViewModel,
+                deviceWorkSessionTableViewModel
             };
 
             AddCommand = new ActionCommand(o =>
             {
-                SelectedTable.AddImpl();
+                RunCommand(SelectedTable.AddImpl);
             });
 
             RemoveCommand = new ActionCommand(o =>
             {
-                SelectedTable.RemoveImpl();
+                RunCommand(SelectedTable.RemoveImpl);
             });
 
             ApplyCommand = new ActionCommand(o =>
             {
-                SelectedTable.SaveImpl();
-                SelectedTable.UpdateImpl();
+                RunCommand(SelectedTable.SaveImpl);
             });
 
             UpdateCommand = new ActionCommand(o =>
             {
-                SelectedTable.UpdateImpl();
-
+                RunCommand(SelectedTable.UpdateImpl);
             });
 
             SelectedTable = Tables.First();
@@ -79,5 +80,16 @@ namespace SoundDbWpf.ViewModel
             }
         }
 
+        private async void RunCommand(Action commandImpl)
+        {
+            try
+            {
+                await Task.Run(() => commandImpl());
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }
