@@ -1,12 +1,10 @@
 ﻿using SoundDatabase.DataModel;
 using SoundDbModel.Tables;
 using SoundDbWpf.ViewModel.Entities;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace SoundDbWpf.ViewModel.Tables
 {
-    public class WorkSessionTableViewModel : TableViewModel<WorkSessionViewModel, WorkSession>, ITableViewModel
+    public class WorkSessionTableViewModel : BaseTableViewModel<WorkSessionViewModel, WorkSession>, ITableViewModel
     {
         public WorkSessionTableViewModel() : base(new WorkSessionsTable(), TableEnum.WorkSession)
         {
@@ -16,7 +14,5 @@ namespace SoundDbWpf.ViewModel.Tables
         {
             return new WorkSessionViewModel(e);
         }
-
-        
     }
 }

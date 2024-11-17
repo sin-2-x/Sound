@@ -39,6 +39,7 @@ namespace SoundDbWpf.ViewModel
             ApplyCommand = new ActionCommand(o =>
             {
                 SelectedTable.SaveImpl();
+                SelectedTable.UpdateImpl();
             });
 
             UpdateCommand = new ActionCommand(o =>

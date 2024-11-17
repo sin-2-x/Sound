@@ -1,5 +1,4 @@
 ﻿using SoundDatabase.DataModel;
-using System;
 
 namespace SoundDbWpf.ViewModel.Entities
 {

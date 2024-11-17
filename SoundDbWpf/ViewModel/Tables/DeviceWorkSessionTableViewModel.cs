@@ -1,17 +1,13 @@
 ﻿using SoundDatabase.DataModel;
 using SoundDbModel.Tables;
 using SoundDbWpf.ViewModel.Entities;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SoundDbWpf.ViewModel.Tables
 {
 
-    public class DeviceWorkSessionTableViewModel : TableViewModel<DeviceWorkSessionViewModel, DeviceWorkSession>
+    public class DeviceWorkSessionTableViewModel : BaseTableViewModel<DeviceWorkSessionViewModel, DeviceWorkSession>
     {
         DeviceTableViewModel devices; WorkSessionTableViewModel workSessions;
 
@@ -21,12 +17,6 @@ namespace SoundDbWpf.ViewModel.Tables
             this.workSessions = workSessions;
         }
 
-        protected override DeviceWorkSessionViewModel CreateViewModel(DeviceWorkSession e)
-        {
-            var vm = new DeviceWorkSessionViewModel(e);
-            vm.Device = Devices.FirstOrDefault(d => d.Model.Id == e.DeviceId);
-            return vm;
-        }
         public ObservableCollection<DeviceViewModel> Devices => devices.Items;
         public ObservableCollection<WorkSessionViewModel> WorkSessions => workSessions.Items;
 
@@ -35,6 +25,16 @@ namespace SoundDbWpf.ViewModel.Tables
             devices.UpdateImpl();
             workSessions.UpdateImpl();
             base.UpdateImpl();
+        }
+
+        protected override DeviceWorkSessionViewModel CreateViewModel(DeviceWorkSession model)
+        {
+            var vm = new DeviceWorkSessionViewModel(model)
+            {
+                Device = Devices.FirstOrDefault(d => d.Model.Id == model.DeviceId),
+                WorkSession = WorkSessions.FirstOrDefault(d => d.Model.Id == model.WorkSessionId)
+            };
+            return vm;
         }
     }
 }

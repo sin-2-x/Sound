@@ -31,6 +31,7 @@ namespace SoundDatabase
             modelBuilder.Entity<AnalyzeSession>().HasRequired(a => a.AudioSignal);
             
             modelBuilder.Entity<Device>().HasMany(i => i.DeviceWorkSession).WithOptional(i => i.Device).HasForeignKey(i => i.DeviceId);
+            modelBuilder.Entity<WorkSession>().HasMany(i => i.DeviceWorkSessions).WithOptional(i => i.WorkSession).HasForeignKey(i => i.WorkSessionId);
 
             //modelBuilder.Entity<DeviceWorkSession>().HasOptional(i => i.Device).WithMany(i=>i.DeviceWorkSession).HasForeignKey(i=>i.DeviceId).WillCascadeOnDelete(false);
             

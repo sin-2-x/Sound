@@ -1,6 +1,5 @@
 ﻿using SoundDatabase;
 using SoundDatabase.DataModel;
-using System.Data.Entity;
 using System.Linq;
 
 namespace SoundDbModel.Tables

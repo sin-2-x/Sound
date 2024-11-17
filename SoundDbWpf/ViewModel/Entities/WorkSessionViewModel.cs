@@ -50,5 +50,11 @@ namespace SoundDbWpf.ViewModel.Entities
                 model.TimeStop = value;
             }
         }
+
+        public override string ToString()
+        {
+
+            return string.Concat(StartTime.ToString("dd.MM.yyyy HH:mm"), " - ", EndTime.ToString("dd.MM.yyyy HH:mm"));
+        }
     }
 }

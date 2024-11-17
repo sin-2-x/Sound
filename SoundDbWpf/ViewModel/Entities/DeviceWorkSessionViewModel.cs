@@ -1,13 +1,5 @@
 ﻿using CommonWpf.ViewModel;
-using SoundDbWpf.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SoundDbWpf.ViewModel.Tables;
 using SoundDatabase.DataModel;
-using System.Collections.ObjectModel;
 
 namespace SoundDbWpf.ViewModel.Entities
 {
@@ -16,6 +8,7 @@ namespace SoundDbWpf.ViewModel.Entities
         private readonly DeviceWorkSession model;
 
         private DeviceViewModel device;
+        private WorkSessionViewModel workSession;
         public DeviceWorkSessionViewModel(DeviceWorkSession model)
         {
             this.model = model;
@@ -39,25 +32,27 @@ namespace SoundDbWpf.ViewModel.Entities
                 }
                 NeedApply = true;
                 device = value;
-                model.Device = device.Model;
-                model.DeviceId = device.Model.Id;
+
+                model.DeviceId = device?.Model.Id;
             }
         }
 
-        public WorkSession WorkSession
+        public WorkSessionViewModel WorkSession
         {
             get
             {
-                return model.WorkSession;
+                return workSession;
             }
             set
             {
-                if (value == model.WorkSession)
+                if (value == workSession)
                 {
                     return;
                 }
                 NeedApply = true;
-                model.WorkSession = value;
+                workSession = value;
+
+                model.WorkSessionId = workSession?.Model.Id;
             }
         }
     }

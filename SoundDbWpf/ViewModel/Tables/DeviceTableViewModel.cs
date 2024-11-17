@@ -4,7 +4,7 @@ using SoundDbWpf.ViewModel.Entities;
 
 namespace SoundDbWpf.ViewModel.Tables
 {
-    public class DeviceTableViewModel : TableViewModel<DeviceViewModel, Device>
+    public class DeviceTableViewModel : BaseTableViewModel<DeviceViewModel, Device>
     {
         public DeviceTableViewModel() : base(new DevicesTable(), TableEnum.Device)
         {

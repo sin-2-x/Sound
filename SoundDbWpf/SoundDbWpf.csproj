@@ -61,9 +61,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\Entities\AnalyzeSessionViewModel.cs" />
-    <Compile Include="ViewModel\Entities\AnalyzeSessionResultViewModel.cs" />
-    <Compile Include="ViewModel\Entities\AudioSignalViewModel.cs" />
     <Compile Include="ViewModel\Entities\BaseTableEntityViewModel.cs" />
     <Compile Include="ViewModel\Entities\DeviceViewModel.cs" />
     <Compile Include="ViewModel\Entities\DeviceWorkSessionViewModel.cs" />
@@ -72,7 +69,7 @@
     <Compile Include="ViewModel\SoundDbViewModel.cs" />
     <Compile Include="ViewModel\TableEnum.cs" />
     <Compile Include="ViewModel\Tables\DeviceWorkSessionTableViewModel.cs" />
-    <Compile Include="ViewModel\Tables\TableViewModel.cs" />
+    <Compile Include="ViewModel\Tables\BaseTableViewModel.cs" />
     <Compile Include="ViewModel\Tables\WorkSessionTableViewModel.cs" />
     <Compile Include="View\CurrentItem\CurrentItemWindow.xaml.cs">
       <DependentUpon>CurrentItemWindow.xaml</DependentUpon>
