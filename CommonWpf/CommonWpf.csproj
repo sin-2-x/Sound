@@ -86,7 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\BytesToImageSourceConverter.cs" />
-    <Compile Include="Converters\CustomEnumConverter.cs" />
     <Compile Include="Converters\EnumToStringConverter.cs" />
     <Compile Include="Converters\Singleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

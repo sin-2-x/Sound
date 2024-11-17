@@ -1,5 +1,6 @@
 ﻿using SoundDatabase.DataModel;
 using SoundDatabase.Migrations;
+using System.Configuration;
 using System.Data.Entity;
 
 namespace SoundDatabase
@@ -17,9 +18,9 @@ namespace SoundDatabase
         public DbSet<DeviceWorkSession> DeviceWorkSessions => Set<DeviceWorkSession>();
 
         public SoundDatabaseContext()
-            : base($"Host={"127.0.0.1"};Port={5432};Database={"SoundDatabase"};Username={"postgres"};Password={"root"};")
+            : base("Name=DefaultConnection")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SoundDatabaseContext, Configuration>(true));
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SoundDatabaseContext, Migrations.Configuration>(true));
 
             Database.CreateIfNotExists();
 
@@ -32,9 +33,6 @@ namespace SoundDatabase
             
             modelBuilder.Entity<Device>().HasMany(i => i.DeviceWorkSession).WithOptional(i => i.Device).HasForeignKey(i => i.DeviceId);
             modelBuilder.Entity<WorkSession>().HasMany(i => i.DeviceWorkSessions).WithOptional(i => i.WorkSession).HasForeignKey(i => i.WorkSessionId);
-
-            //modelBuilder.Entity<DeviceWorkSession>().HasOptional(i => i.Device).WithMany(i=>i.DeviceWorkSession).HasForeignKey(i=>i.DeviceId).WillCascadeOnDelete(false);
-            
         }
     }
 }
