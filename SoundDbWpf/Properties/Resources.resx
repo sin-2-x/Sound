@@ -121,13 +121,28 @@
   <data name="AddIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AddIcon.svg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ChangeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ChangeIcon.svg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ApplyIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\applyicon.svg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="RemoveIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RemoveIcon.svg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="SoundDbWpf_WindowName" xml:space="preserve">
     <value>Звуковая пеленгация: база данных</value>
+  </data>
+  <data name="ToolTip_Add" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="ToolTip_Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="ToolTip_Remove" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="ToolTip_Update" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="UpdateIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UpdateIcon.svg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

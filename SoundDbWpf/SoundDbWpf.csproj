@@ -140,11 +140,13 @@
     <None Include="Resources\RemoveIcon.svg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ChangeIcon.svg" />
+    <None Include="Resources\ApplyIcon.svg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AddIcon.svg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\UpdateIcon.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

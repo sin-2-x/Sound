@@ -73,9 +73,9 @@ namespace SoundDbWpf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] ChangeIcon {
+        public static byte[] ApplyIcon {
             get {
-                object obj = ResourceManager.GetObject("ChangeIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("ApplyIcon", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -96,6 +96,52 @@ namespace SoundDbWpf.Properties {
         public static string SoundDbWpf_WindowName {
             get {
                 return ResourceManager.GetString("SoundDbWpf_WindowName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создать.
+        /// </summary>
+        public static string ToolTip_Add {
+            get {
+                return ResourceManager.GetString("ToolTip_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Применить.
+        /// </summary>
+        public static string ToolTip_Apply {
+            get {
+                return ResourceManager.GetString("ToolTip_Apply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удалить.
+        /// </summary>
+        public static string ToolTip_Remove {
+            get {
+                return ResourceManager.GetString("ToolTip_Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обновить.
+        /// </summary>
+        public static string ToolTip_Update {
+            get {
+                return ResourceManager.GetString("ToolTip_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] UpdateIcon {
+            get {
+                object obj = ResourceManager.GetObject("UpdateIcon", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

@@ -39,20 +39,18 @@
 			<Button Width="{StaticResource ButtonWidth}"
 					Height="{StaticResource ButtonHeight}"
 					Margin="{StaticResource LeftMargin}"
-					ToolTip="{x:Static properties:Resources.AddIcon}"
+					ToolTip="{x:Static properties:Resources.ToolTip_Add}"
 					Command="{Binding AddCommand}">
 				<Image Width="{StaticResource ImageWidth}"
 					   Height="{StaticResource ImageHeight}"
 					   Source="{Binding AddIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
 			</Button>
 			
-			
-			
 			<Button Width="{StaticResource ButtonWidth}"
 					Height="{StaticResource ButtonHeight}"
 					Margin="{StaticResource LeftMargin}"
 					Command="{Binding RemoveCommand}"
-					ToolTip="{x:Static properties:Resources.AddIcon}">
+					ToolTip="{x:Static properties:Resources.ToolTip_Remove}">
 				<Image Width="{StaticResource ImageWidth}"
 					   Height="{StaticResource ImageHeight}"
 					   Source="{Binding RemoveIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
@@ -62,14 +60,17 @@
 					Height="{StaticResource ButtonHeight}"
 					Margin="{StaticResource LeftMargin}"
 					Command="{Binding ApplyCommand}"
-					ToolTip="{x:Static properties:Resources.AddIcon}">
+					ToolTip="{x:Static properties:Resources.ToolTip_Apply}">
+				<Image Width="{StaticResource ImageWidth}"
+					   Height="{StaticResource ImageHeight}"
+					   Source="{Binding ApplyIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>
 			</Button>
 			
 			<Button Width="{StaticResource ButtonWidth}"
 					Height="{StaticResource ButtonHeight}"
 					Margin="{StaticResource LeftMargin}"
 					Command="{Binding UpdateCommand}"
-					ToolTip="{x:Static properties:Resources.AddIcon}">
+					ToolTip="{x:Static properties:Resources.ToolTip_Update}">
 				<Image Width="{StaticResource ImageWidth}"
 					   Height="{StaticResource ImageHeight}"
 					   Source="{Binding UpdateIcon, Converter={x:Static converters:BytesToImageSourceConverter.Instance}}"></Image>

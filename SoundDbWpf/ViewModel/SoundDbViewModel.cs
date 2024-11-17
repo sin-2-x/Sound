@@ -14,6 +14,7 @@ namespace SoundDbWpf.ViewModel
         private readonly ITheme theme;
 
         private ITableViewModel selectedTable;
+
         public SoundDbViewModel(ITheme theme)
         {
             this.theme = theme;
@@ -55,6 +56,7 @@ namespace SoundDbWpf.ViewModel
         public byte[] AddIcon => theme.AddIcon;
         public byte[] RemoveIcon => theme.RemoveIcon;
         public byte[] UpdateIcon => theme.UpdateIcon;
+        public byte[] ApplyIcon => theme.ApplyIcon;
 
 
         public ICommand AddCommand { get; }
@@ -88,7 +90,7 @@ namespace SoundDbWpf.ViewModel
             }
             catch (Exception)
             {
-
+                // TODO: Log
             }
         }
     }

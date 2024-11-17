@@ -11,9 +11,9 @@ namespace SoundDbWpf.ViewModel.Tables
     {
         DeviceTableViewModel devices; WorkSessionTableViewModel workSessions;
 
-        public DeviceWorkSessionTableViewModel(DeviceTableViewModel d, WorkSessionTableViewModel workSessions) : base(new DeviceWorkSessionTable(), TableEnum.DeviceWorkSession)
+        public DeviceWorkSessionTableViewModel(DeviceTableViewModel devices, WorkSessionTableViewModel workSessions) : base(new DeviceWorkSessionTable(), TableEnum.DeviceWorkSession)
         {
-            this.devices = d;
+            this.devices = devices;
             this.workSessions = workSessions;
         }
 
