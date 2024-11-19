@@ -57,7 +57,7 @@ namespace SoundDbWpf.ViewModel.Entities
         }
 
         public override string ToString() {
-            return string.Concat("Устройство: ", Device.ToString(), "Рабочая сессия: ", WorkSession.ToString());
+            return string.Concat("Устройство: ", Device?.ToString(), "Рабочая сессия: ", WorkSession?.ToString());
         }
     }
 }
