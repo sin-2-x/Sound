@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace SoundDbWpf.ViewModel
 {
@@ -24,10 +25,12 @@ namespace SoundDbWpf.ViewModel
             var deviceTableViewModel = new DeviceTableViewModel();
             var workSessionTableViewModel = new WorkSessionTableViewModel();
             var deviceWorkSessionTableViewModel = new DeviceWorkSessionTableViewModel(deviceTableViewModel, workSessionTableViewModel);
+            var audioSignalsTableViewModel = new AudioSignalTableViewModel(deviceWorkSessionTableViewModel); 
 
             Tables = new List<ITableViewModel> {deviceTableViewModel,
                 workSessionTableViewModel,
-                deviceWorkSessionTableViewModel
+                deviceWorkSessionTableViewModel,
+                audioSignalsTableViewModel
             };
 
             AddCommand = new ActionCommand(o =>

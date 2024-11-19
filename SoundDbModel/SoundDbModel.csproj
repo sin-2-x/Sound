@@ -39,6 +39,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Tables\AudioSignalTable.cs" />
     <Compile Include="Tables\BaseTable.cs" />
     <Compile Include="Tables\DevicesTable.cs" />
     <Compile Include="Tables\DeviceWorkSessionTable.cs" />

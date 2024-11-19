@@ -55,5 +55,9 @@ namespace SoundDbWpf.ViewModel.Entities
                 model.WorkSessionId = workSession?.Model.Id;
             }
         }
+
+        public override string ToString() {
+            return string.Concat("Устройство: ", Device.ToString(), "Рабочая сессия: ", WorkSession.ToString());
+        }
     }
 }

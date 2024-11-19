@@ -14,29 +14,27 @@ namespace SoundDbModel.Tables
 
         public ICollection<T> GetEntries()
         {
-            List<T> d;
             using (var db = new SoundDatabaseContext())
             {
                 var d1 = GetEntries(db);
-                d = d1.ToList();
+                return d1.ToList();
             }
-            return d;
         }
 
         public void UpdateEntries(ICollection<T> entriesToAdd, ICollection<T> entriesToRemove, ICollection<T> entriesToUpdate)
         {
-            var usless = entriesToAdd.Intersect(entriesToRemove).ToArray();
-            
-            foreach (var entry in usless)
+            var useless = entriesToAdd.Intersect(entriesToRemove).ToArray();
+
+            foreach (var entry in useless)
             {
                 entriesToRemove.Remove(entry);
                 entriesToUpdate.Remove(entry);
                 entriesToAdd.Remove(entry);
             }
 
-            usless = entriesToAdd.Intersect(entriesToUpdate).ToArray();
+            useless = entriesToAdd.Intersect(entriesToUpdate).ToArray();
 
-            foreach (var entity in usless)
+            foreach (var entity in useless)
             {
                 entriesToUpdate.Remove(entity);
             }
@@ -59,14 +57,6 @@ namespace SoundDbModel.Tables
             {
                 Attach(db, entry);
                 db.Entry(entry).State = state;
-
-                /*if (entry is Device w)
-                {
-                    //Attach(db, entry);
-                    //db.Entry(entry).State = state;
-                    var o = db.Entry(w).State;
-                    var o1 = db.Entry(w.DeviceWorkSession[0]).State;
-                }*/
             }
         }
     }

@@ -61,9 +61,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Entities\AudioSignalViewModel.cs" />
     <Compile Include="ViewModel\Entities\BaseTableEntityViewModel.cs" />
     <Compile Include="ViewModel\Entities\DeviceViewModel.cs" />
     <Compile Include="ViewModel\Entities\DeviceWorkSessionViewModel.cs" />
+    <Compile Include="ViewModel\Tables\AudioSignalTableViewModel.cs" />
     <Compile Include="ViewModel\Tables\DeviceTableViewModel.cs" />
     <Compile Include="ViewModel\Entities\WorkSessionViewModel.cs" />
     <Compile Include="ViewModel\SoundDbViewModel.cs" />
@@ -79,6 +81,9 @@
     </Compile>
     <Compile Include="Theme\ITheme.cs" />
     <Compile Include="Theme\LightTheme.cs" />
+    <Compile Include="View\Tables\AudioSinalTable.xaml.cs">
+      <DependentUpon>AudioSinalTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Tables\DevicesTable.xaml.cs">
       <DependentUpon>DevicesTable.xaml</DependentUpon>
     </Compile>
@@ -100,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SoundDbWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tables\AudioSinalTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

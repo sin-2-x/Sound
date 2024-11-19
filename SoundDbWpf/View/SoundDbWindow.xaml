@@ -92,7 +92,10 @@
 				<DataTemplate x:Key="{x:Static viewmodel:TableEnum.DeviceWorkSession}">
 					<tables:DeviceWorkSessionsTable />
 				</DataTemplate>
-			</ContentPresenter.Resources>
+        <DataTemplate x:Key="{x:Static viewmodel:TableEnum.AudioSignal}">
+          <tables:AudioSinalTable />
+        </DataTemplate>
+      </ContentPresenter.Resources>
 		</ContentPresenter>
 	</Grid>
 </Window>
